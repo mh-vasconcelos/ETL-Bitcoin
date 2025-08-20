@@ -1,0 +1,22 @@
+PROBLEMA 1:
+A senha quando usa caracteres especiais (como '@') faz com que o DATABASE_URL resulte em erro.
+Para tal, uma solução é usar a biblioteca 'urllib', fazendo:
+    from urllib.parse import quote_plus
+    user_enc = quote_plus(USER)
+    pw_enc = quote_plus(PASSWORD)
+
+Em seguida, basta substituir nas f-strings os DB_USER e DB_PASSWORD por user_enc e pw_enc:
+    DATABASE_URL = f"postgresql://{user_enc}:{pw_enc}@{HOST}:{PORT}/{DBNAME}"
+
+
+PROBLEMA 2:
+Quando fazemos:
+    df.to_sql("bitcoin", engine, if_exists="append", index=False)
+Usando o 'if_exists', precisamos garantir que as colunas manuais do banco tenham o mesmo nome das colunas geradas no Python.
+Cabe ao usuário modificar com
+    ALTER TABLE public.bitcoin RENAME column horario_coleta TO timestamp;
+ou modificar no próprio python.
+
+
+
+
