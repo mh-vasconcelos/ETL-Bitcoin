@@ -1,0 +1,3 @@
+Uma tabela por requisito de negócio te dá mais legibilidade. Por exemplo, os dados que vão para um BI e para um AI Agent podem ser oriundos de duas tabelas, mesmo que sejam dados do mesmo contexto
+
+Por que um DW e não conexão direta a uma fonte? Basicamente, estruturar um DW te permite "economizar" no uso dos dados necessários pra resolver o problema. Ao usar um modelo existente, podemos trazer dados desnecessários. Quando sabemos nossa necessidade e precisamos de uma parte daquele todo, basta estruturar um local (DW) para armazenar os dados estruturados que precisamos
